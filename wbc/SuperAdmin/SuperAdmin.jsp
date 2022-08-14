@@ -17,7 +17,15 @@ response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidat
 response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", "0");
 
-%>
+String id=(String)request.getRemoteUser();
+out.print(id);
+session = request.getSession();
+session.setAttribute("EmpID",id);
+
+if(!request.isUserInRole("1")){
+	response.sendRedirect("/wbc/Redirect.jsp");
+		}
+%> 
 
 <center> <h2>Employee Management </h2></center>
 <ol>

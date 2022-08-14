@@ -30,13 +30,8 @@ else{
 String id=(String)session.getAttribute("EmpID");
 id2=Integer.parseInt(id);
 }try{
-connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","Vimal@2002"); 
-statement = connection.prepareStatement(" select Rid from EmployeeDB where EmpID =?");
-statement.setInt(1, id2);
- resultset = statement.executeQuery();
-resultset.next();
-if(resultset.getInt(1)!=1){
-response.sendRedirect("Redirect.jsp");
+if((!request.isUserInRole("1"))){
+response.sendRedirect("/wbc/Redirect.jsp");
 	}
 	}
 catch(Exception e){
@@ -75,7 +70,7 @@ while(resultset.next()){%>
 <%}%>
 
 
-	<form method="post" action="Edit">
+	<form method="post" action="/wbc/Edit">
 		<h1>
 			<center>Edit Details</center><br>
 		</h1>
@@ -135,7 +130,7 @@ while(resultset.next()){%>
 		</table>
 
 	</form>
-<form action="SuperAdmin.jsp"><h1><center>Go Back</center>
+<form action="/SuperAdmin/SuperAdmin.jsp"><h1><center>Go Back</center>
  </h1><center>To Go Back ......!!!!!<table><tr><td><input type="submit" value="__"></td
 </tr></center></table></form>
 

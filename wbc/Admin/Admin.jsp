@@ -17,6 +17,20 @@
 response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
 response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", "0");
+
+String id=(String)request.getRemoteUser();
+session = request.getSession();
+session.setAttribute("EmpID",id);
+if(session.getAttribute("EmpID")==null)
+	{
+		response.sendRedirect("/wbc/login.jsp");
+	}
+out.print(id);
+
+    out.print(request.isUserInRole("2"));
+if(!request.isUserInRole("2")){
+    response.sendRedirect("/wbc/Redirect.jsp");
+    }
 %>
 
 

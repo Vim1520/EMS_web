@@ -11,11 +11,76 @@
 </head>
 <body>
 
-<% 
+<%
+String id=(String)request.getRemoteUser();
+out.print(id);
+
+session = request.getSession();
+session.setAttribute("EmpID",id);
+
 response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
 response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", "0");
- %><br>
+int id2=0;
+ResultSet resultset;
+Connection connection=null;
+PreparedStatement statement=null;
+if(session.getAttribute("EmpID")==null)
+{	
+response.sendRedirect("/wbc/login.jsp");
+}
+
+else{
+String ids=(String)session.getAttribute("EmpID");
+id2=Integer.parseInt(ids);
+}try{
+connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","Vimal@2002"); 
+statement = connection.prepareStatement(" select Rid from EmployeeDB where EmpID =?");
+statement.setInt(1, id2);
+ resultset = statement.executeQuery();
+resultset.next();
+if(!request.isUserInRole("3")){
+response.sendRedirect("/wbc/Redirect.jsp");
+	}
+	}
+catch(Exception e){
+//response.sendRedirect("Login.jsp");
+}
+
+%>
+<center><H1> Employee Details </H1>
+       <%
+          
+ String query="select e.empid,e.EmpFirstName,e.EmpLastName,e.age,e.city,e.EmpMobno,e.EmpEmailID,r.role,c.category from employeedb as e left join cat as c on c.id = e.cid left join rol as r on e.rid=r.id where e.EmpID=?" ;
+statement=connection.prepareStatement(query);
+statement.setInt(1,id2);
+resultset=statement.executeQuery();
+       %>
+      <TABLE BORDER="2" cellpadding="8" cellspacing="6">
+      <TR>
+      <TH>ID</TH>
+      <TH>First Name</TH>
+      <TH>Last Name</TH>
+      <TH>Age</TH>
+      <TH>City</TH>
+      <TH>Mobile</TH>
+	<TH>Email</TH>
+	<TH>Role</TH>
+	<TH>Category</TH>
+      </TR>
+      <% while(resultset.next()){ %>
+      <TR>
+       <TD> <%= resultset.getString(1) %></td>
+       <TD> <%= resultset.getString(2) %></TD>
+       <TD> <%= resultset.getString(3) %></TD>
+       <TD> <%= resultset.getString(4) %></TD>
+       <TD> <%= resultset.getString(5) %></TD>
+       <TD> <%= resultset.getString(6) %></TD>
+       <TD> <%= resultset.getString(7) %></TD>
+       <TD> <%= resultset.getString(8) %></td>
+       <TD> <%= resultset.getString(9) %></td>
+      </TR>
+      <% } %></center><br>
 <center><table cellspacing="18">
 <tr>
 <h3><b><a href="Chpass.jsp">1.Change Password</a></b></tr></h3><tr>

@@ -15,20 +15,14 @@ response.setHeader("Expires", "0");
 	
 if(session.getAttribute("EmpID")==null)
 	{
-		response.sendRedirect("Login.jsp");
+		response.sendRedirect("/wbc/login.jsp");
 	}
-
-
-
 %>
-
-
-
-	<form action="/wbc/Logout">
+	<form action="Logout">
 		<h1>
-		<center>LogOut</center>
+		<center>!!!!! ------ ERROR ------ !!!!!</center>
 		</h1>
-		<center>Are You Sure You want to Logout?
+		<center>Sorry !!! Invalid Action Try ReLogging In !!!!!
 		<table><tr><td><input type="submit" value="Logout"></td>
 		</tr>
 		</center>

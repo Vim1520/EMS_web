@@ -18,12 +18,12 @@ if(session.getAttribute("EmpID")==null)
 		response.sendRedirect("Login.jsp");
 	}
 %>
-	<form action="Logout">
+	<form action="/wbc/Logout">
 		<h1>
 		<center>!!!!! ------ ERROR ------ !!!!!</center>
 		</h1>
 		<center>Sorry !!! Invalid Action Try ReLogging In !!!!!
-		<table><tr><td><input type="submit" value="Logout"></td>
+		<table><tr><td><input type="submit" value="/wbc/Logout"></td>
 		</tr>
 		</center>
 		</table>

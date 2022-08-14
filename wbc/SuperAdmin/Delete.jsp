@@ -21,20 +21,15 @@ Connection connection=null;
 PreparedStatement statement=null;
 if(session.getAttribute("EmpID")==null)
 {	
-response.sendRedirect("Login.jsp");
+response.sendRedirect("/wbc/login.jsp");
 }
 
 else{
 String id=(String)session.getAttribute("EmpID");
 id2=Integer.parseInt(id);
 }try{
-connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","Vimal@2002"); 
-statement = connection.prepareStatement(" select Rid from EmployeeDB where EmpID =?");
-statement.setInt(1, id2);
- resultset = statement.executeQuery();
-resultset.next();
-if(resultset.getInt(1)!=1){
-response.sendRedirect("Redirect.jsp");
+if(!request.isUserInRole("1")){
+response.sendRedirect("/wbc/Redirect.jsp");
 	}
 	}
 catch(Exception e){
@@ -45,7 +40,7 @@ catch(Exception e){
 
 
 <h3>------ Enter ID to Delete ------</h3>
-<form method="post" action="Delete">
+<form method="post" action="/wbc/Delete">
 <table>
 <tr>
 <td>Enter Employee ID :</td>

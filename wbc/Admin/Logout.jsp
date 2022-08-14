@@ -15,11 +15,11 @@ response.setHeader("Expires", "0");
 	
 if(session.getAttribute("EmpID")==null)
 	{
-		response.sendRedirect("Login.jsp");
+		response.sendRedirect("/wbc/login.jsp");
 	}
 %>
 
-	<form action="Logout">
+	<form action="/wbc/Logout">
 		<h1>
 		<center>LogOut</center>
 		</h1>

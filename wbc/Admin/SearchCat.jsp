@@ -21,30 +21,25 @@ Connection connection=null;
 PreparedStatement statement=null;
 if(session.getAttribute("EmpID")==null)
 {	
-response.sendRedirect("Login.jsp");
+response.sendRedirect("/wbc/login.jsp");
 }
 
 else{
 String id=(String)session.getAttribute("EmpID");
 id2=Integer.parseInt(id);
 }try{
-connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeedb","root","Vimal@2002"); 
-statement = connection.prepareStatement(" select Rid from EmployeeDB where EmpID =?");
-statement.setInt(1, id2);
- resultset = statement.executeQuery();
-resultset.next();
-if(resultset.getInt(1)!=1 && resultset.getInt(1)!=2){
-response.sendRedirect("Redirect.jsp");
+	if((!request.isUserInRole("1"))&&(!request.isUserInRole("2"))){
+	response.sendRedirect("/wbc/Redirect.jsp");
 	}
-	}
+}
 catch(Exception e){
 //response.sendRedirect("Login.jsp");
 }
 %>
 
 
-<h3>-------- Enter ID to Search --------</h3>
-<form method="post" action="SearchID">
+<h3>-------- Select Category to Search --------</h3>
+<form method="post" action="/wbc/SearchID">
 <table>
 <tr>
 <td>Select Category :</td>

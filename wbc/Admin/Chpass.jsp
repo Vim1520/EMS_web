@@ -20,7 +20,7 @@ if(session.getAttribute("EmpID")==null)
 %>
 
 <h3>------ Change Password ------</h3>
-<form method="post" action="Chpass">
+<form method="post" action="/wbc/Chpass">
 <table>
 <tr>
 <td>Enter New Password :</td>

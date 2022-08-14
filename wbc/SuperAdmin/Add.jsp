@@ -13,12 +13,20 @@ response.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidat
 response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", "0");
 
+if(session.getAttribute("EmpID")==null)
+	{
+		response.sendRedirect("/wbc/login.jsp");
+	}
+	if(!request.isUserInRole("1")){
+		response.sendRedirect("Redirect.jsp");
+		}
+
 
 
 %>
 
 
-	<form method='post' action="CRUD">
+	<form method='post' action="/wbc/CRUD">
 		<h1>
 			<center>Add Employee</center>
 		</h1>

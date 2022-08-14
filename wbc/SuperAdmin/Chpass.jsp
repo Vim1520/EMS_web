@@ -12,7 +12,7 @@ response.setHeader("Expires", "0");
 	
 if(session.getAttribute("EmpID")==null)
 	{
-		response.sendRedirect("Login.jsp");
+		response.sendRedirect("/wbc/login.jsp");
 	}
 
 
@@ -20,7 +20,7 @@ if(session.getAttribute("EmpID")==null)
 %>
 
 <h3>------ Change Password ------</h3>
-<form method="post" action="Chpass">
+<form method="post" action="/wbc/Chpass">
 <table>
 <tr>
 <td>Enter New Password :</td>
