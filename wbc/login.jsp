@@ -6,12 +6,24 @@
 <title>Let's Proceed --!@ ! @!--</title>
 </head>
 <body>
-    <h3> </h3>
-    <center>
-<form >
-<input type="submit" value="Admin" formaction="admin/Admin.jsp">
-<input type="submit" value="User" formaction="Ulogin.jsp">
+    <h3>Role you are going to Login as :: ?? </h3>
+    <form>
+    <table>
+        <center>
+            <tr>
+                <td>To Login as Super Admin :</td>
+                <td><input type="submit" value="SuperAdmin" formaction="SuperAdmin/SuperAdmin.jsp"></td>
+            </tr>
+            <tr>
+                <td>To Login as Super Admin :</td>
+                <td><input type="submit" value="Admin" formaction="Admin/Admin.jsp"></td>
+            </tr>
+            <tr>
+                <td>To Login as Super Admin :</td>
+                <td><input type="submit" value="User" formaction="User/User.jsp"></td>
+            </tr>
     </center>
+</table>
 </form>
 </body>
 </html>

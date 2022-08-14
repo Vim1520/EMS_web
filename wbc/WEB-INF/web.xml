@@ -15,12 +15,16 @@
 <security-constraint>
 <web-resource-collection>
 <web-resource-name>Simple Web Resource</web-resource-name>
-<url-pattern>/admin/*</url-pattern>
+<url-pattern>/SuperAdmin/*</url-pattern>
+<url-pattern>/Admin/*</url-pattern>
+<url-pattern>/User/*</url-pattern>
 <http-method>GET</http-method>
 <http-method>POST</http-method>
 </web-resource-collection>
 <auth-constraint>
 <role-name>1</role-name>
+<role-name>2</role-name>
+<role-name>3</role-name>
 </auth-constraint>
 
 </security-constraint>
@@ -30,6 +34,8 @@
 </login-config>
 <security-role>
 <role-name>1</role-name>
+<role-name>2</role-name>
+<role-name>3</role-name>
 </security-role>
 
 </web-app>
