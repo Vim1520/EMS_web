@@ -1,4 +1,8 @@
 # EMS_web
 
 
-The Logout is yet to be Configured !!!
+
+
+A Web Application to Manage Employee Details -----
+    * Tomcat Authenticated
+
