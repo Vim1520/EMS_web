@@ -10,8 +10,7 @@
 <title>Employee Management</title>
 </head>
 <body>
-<h1><center>Employee Management System</center></h1><br>
-<center><h3> Employee Management System to manage the details of Employees !!!! </h3></center>
+
 <%		int j=0;
 		out.print(request.getRemoteUser());
       String id=request.getRemoteUser();
